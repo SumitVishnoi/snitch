@@ -4,7 +4,7 @@ import {config} from "../config/config.js"
 
 async function sendTokenResponse(user, res, message) {
     const token = jwt.sign(
-        {id},
+        {id: user.id},
         config.JWT_SECRET,
         {expiresIn: "7d"}
     )
@@ -49,5 +49,37 @@ export const register = async (req, res)=> {
 
     } catch (error) {
         return res.status(500).json({ message: "Server error" });
+    }
+}
+
+
+export const login = async (req, res)=> {
+    const {email, password} = req.body
+
+    try {
+        const user = await userModel.findOne({email})
+
+        if(!user) {
+            return res.status(400).json({
+                message: "Invalid email or password",
+                success: false
+            })
+        }
+
+        const isMatch = await user.comparePassword(password)
+
+        if(!isMatch) {
+            return res.status(400).json({
+                message: "Invalid email or password",
+                success: false
+            })
+        }
+
+        sendTokenResponse(user, res, "User loggedIn successfully")
+
+    } catch (error) {
+        return res.status(500).json({
+            message: "Server error"
+        })
     }
 }

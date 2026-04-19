@@ -19,7 +19,7 @@ app.use(passport.initialize())
 passport.use(new GoogleStartegy({
     clientID: config.GOOGLE_CLIENT_ID,
     clientSecret: config.GOOGLE_CLIENT_SECRET,
-    callbackURL: "/auth/google/callback"
+    callbackURL: "/api/auth/google/callback"
 }, (accessToken, refreshToken, profile, done) => {
     return done(null, profile)
 }))

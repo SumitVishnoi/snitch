@@ -3,16 +3,13 @@ import { useAuth } from "../hook/useAuth";
 import { useNavigate } from "react-router";
 import ContinueWithGoogle from "../components/ContinueWithGoogle";
 
-const Register = () => {
-  const { handleRegister } = useAuth();
+const Login = () => {
+  const { handleLogin } = useAuth();
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    fullName: "",
-    contactNumber: "",
     email: "",
     password: "",
-    isSeller: false,
   });
 
   const handleChange = (e) => {
@@ -25,13 +22,11 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await handleRegister({
+    await handleLogin({
       email: formData.email,
-      contact: formData.contactNumber,
-      password: formData.password,
-      fullname: formData.fullName,
-    });
-    navigate("/");
+      password: formData.password
+    })
+    navigate("/")
   };
 
   const inputStyle = {
@@ -80,7 +75,7 @@ const Register = () => {
                 "linear-gradient(to top, rgba(27,24,20,0.62) 0%, rgba(27,24,20,0.08) 45%, transparent 100%)",
             }}
           />
-          <div className="absolute inset-0 p-14 flex flex-col justify-between z-10">
+          <div className="absolute inset-0 px-14 py-2 flex flex-col justify-between z-10">
             <span
               className="text-sm font-bold tracking-[0.35em] uppercase"
               style={{
@@ -150,53 +145,6 @@ const Register = () => {
 
             {/* Form */}
             <form onSubmit={handleSubmit} className="flex flex-col gap-9">
-              {/* Full Name */}
-              <div className="flex flex-col gap-2">
-                <label
-                  htmlFor="reg-fullName"
-                  className="text-[10px] uppercase tracking-[0.18em] font-medium"
-                  style={{ color: "#7A6E63" }}
-                >
-                  Full Name
-                </label>
-                <input
-                  id="reg-fullName"
-                  type="text"
-                  name="fullName"
-                  value={formData.fullName}
-                  onChange={handleChange}
-                  required
-                  placeholder="e.g. John Doe"
-                  className="w-full bg-transparent outline-none py-3 text-sm transition-colors duration-300"
-                  style={inputStyle}
-                  onFocus={handleFocus}
-                  onBlur={handleBlur}
-                />
-              </div>
-
-              {/* Contact Number */}
-              <div className="flex flex-col gap-2">
-                <label
-                  htmlFor="reg-contact"
-                  className="text-[10px] uppercase tracking-[0.18em] font-medium"
-                  style={{ color: "#7A6E63" }}
-                >
-                  Contact Number
-                </label>
-                <input
-                  id="reg-contact"
-                  type="tel"
-                  name="contactNumber"
-                  value={formData.contactNumber}
-                  onChange={handleChange}
-                  required
-                  placeholder="+91 98765 43210"
-                  className="w-full bg-transparent outline-none py-3 text-sm transition-colors duration-300"
-                  style={inputStyle}
-                  onFocus={handleFocus}
-                  onBlur={handleBlur}
-                />
-              </div>
 
               {/* Email */}
               <div className="flex flex-col gap-2">
@@ -246,55 +194,6 @@ const Register = () => {
                 />
               </div>
 
-              {/* Register as Seller — minimal checkbox */}
-              <label
-                htmlFor="reg-isSeller"
-                className="flex items-center gap-4 cursor-pointer group"
-              >
-                <div className="relative shrink-0">
-                  <input
-                    id="reg-isSeller"
-                    type="checkbox"
-                    name="isSeller"
-                    checked={formData.isSeller}
-                    onChange={handleChange}
-                    className="peer sr-only"
-                  />
-                  {/* Custom checkbox */}
-                  <div
-                    className="w-4 h-4 border transition-all duration-200 flex items-center justify-center peer-checked:border-[#C9A96E]"
-                    style={{
-                      borderColor: formData.isSeller ? "#C9A96E" : "#d0c5b5",
-                      backgroundColor: formData.isSeller
-                        ? "#C9A96E"
-                        : "transparent",
-                    }}
-                  >
-                    {formData.isSeller && (
-                      <svg
-                        className="w-2.5 h-2.5"
-                        viewBox="0 0 12 12"
-                        fill="none"
-                      >
-                        <path
-                          d="M2 6l3 3 5-5"
-                          stroke="#fbf9f6"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    )}
-                  </div>
-                </div>
-                <span
-                  className="text-[11px] uppercase tracking-[0.15em] transition-colors duration-200"
-                  style={{ color: formData.isSeller ? "#C9A96E" : "#7A6E63" }}
-                >
-                  Register as Seller
-                </span>
-              </label>
-
               {/* Sign Up Button */}
               <button
                 type="submit"
@@ -313,7 +212,7 @@ const Register = () => {
                   e.currentTarget.style.color = "#fbf9f6";
                 }}
               >
-                Sign Up
+                Sign In
               </button>
 
               {/* Divider */}
@@ -354,7 +253,7 @@ const Register = () => {
                   onMouseEnter={(e) => (e.target.style.color = "#C9A96E")}
                   onMouseLeave={(e) => (e.target.style.color = "#7A6E63")}
                 >
-                  Sign in
+                  Sign up
                 </a>
               </p>
             </form>
@@ -365,4 +264,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Login;

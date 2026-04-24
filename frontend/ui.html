@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>New Product - The Ethereal Editorial</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-container": "#3e5868",
+                        "on-tertiary": "#f4faff",
+                        "on-error-container": "#752121",
+                        "on-tertiary-fixed-variant": "#486272",
+                        "secondary-container": "#e4e2e2",
+                        "surface-dim": "#d4dcda",
+                        "primary": "#5f5e5e",
+                        "tertiary-dim": "#3c5666",
+                        "primary-container": "#e5e2e1",
+                        "on-primary-container": "#525151",
+                        "on-secondary-container": "#515252",
+                        "inverse-on-surface": "#9c9d9c",
+                        "outline": "#757c7b",
+                        "secondary-fixed": "#e4e2e2",
+                        "secondary-fixed-dim": "#d5d4d4",
+                        "primary-dim": "#535252",
+                        "surface-container-high": "#e4e9e8",
+                        "on-surface": "#2d3433",
+                        "error-container": "#fe8983",
+                        "surface-variant": "#dde4e3",
+                        "surface-container-low": "#f2f4f3",
+                        "on-primary": "#faf7f6",
+                        "secondary-dim": "#535353",
+                        "on-secondary-fixed-variant": "#5b5b5b",
+                        "error": "#9f403d",
+                        "error-dim": "#4e0309",
+                        "on-primary-fixed": "#403f3f",
+                        "on-secondary-fixed": "#3f3f3f",
+                        "on-background": "#2d3433",
+                        "primary-fixed": "#e5e2e1",
+                        "tertiary-container": "#d0ecff",
+                        "surface-bright": "#f9f9f8",
+                        "tertiary": "#486272",
+                        "surface-tint": "#5f5e5e",
+                        "surface-container": "#ebeeed",
+                        "on-error": "#fff7f6",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#faf8f8",
+                        "surface": "#f9f9f8",
+                        "surface-container-highest": "#dde4e3",
+                        "outline-variant": "#adb3b2",
+                        "inverse-surface": "#0c0f0e",
+                        "on-surface-variant": "#5a6060",
+                        "on-tertiary-fixed": "#2c4655",
+                        "on-primary-fixed-variant": "#5c5b5b",
+                        "background": "#f9f9f8",
+                        "secondary": "#5f5f5f",
+                        "tertiary-fixed-dim": "#c2def0",
+                        "tertiary-fixed": "#d0ecff",
+                        "inverse-primary": "#ffffff",
+                        "primary-fixed-dim": "#d6d4d3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        h1, h2, h3 {
+            font-family: 'Manrope', sans-serif;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        /* Custom ghost border approach */
+        .ghost-border {
+            box-shadow: 0 0 0 1px rgba(173, 179, 178, 0.15);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/70 dark:bg-stone-900/70 backdrop-blur-md shadow-[0px_20px_40px_rgba(45,52,51,0.05)]">
+<div class="flex justify-between items-center px-8 py-6 w-full">
+<button class="flex items-center text-stone-600 dark:text-stone-300 active:opacity-70 transition-opacity">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+<h1 class="font-['Manrope'] text-sm tracking-tight font-semibold text-stone-900">New Product</h1>
+<button class="font-['Manrope'] text-sm tracking-tight text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-stone-100 transition-colors active:opacity-70">
+                Publish
+            </button>
+</div>
+<div class="bg-stone-100/50 dark:bg-stone-800/50 h-px w-full"></div>
+</header>
+<main class="pt-32 pb-48 px-6 max-w-5xl mx-auto min-h-screen">
+<!-- Editorial Header Section -->
+<section class="mb-20 text-center md:text-left">
+<span class="text-xs tracking-[0.2em] uppercase text-outline mb-4 block font-medium">Curator Portal</span>
+<h2 class="text-4xl md:text-6xl font-light tracking-tight text-on-surface leading-tight">
+                Define your <br/><span class="italic font-normal">masterpiece.</span>
+</h2>
+</section>
+<!-- Form Canvas -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+<!-- Left Column: Primary Fields -->
+<form class="lg:col-span-7 space-y-16">
+<!-- Text Inputs Group -->
+<div class="space-y-12">
+<div class="group">
+<label class="block text-[10px] uppercase tracking-widest text-outline mb-3 font-semibold" for="title">Product Title</label>
+<input class="w-full bg-transparent border-none p-0 text-2xl font-headline font-light placeholder:text-surface-variant focus:ring-0" id="title" placeholder="Give it a soulful name..." type="text"/>
+<div class="h-px w-full bg-surface-container mt-2 group-focus-within:bg-primary transition-colors duration-500"></div>
+</div>
+<div class="group">
+<label class="block text-[10px] uppercase tracking-widest text-outline mb-3 font-semibold" for="description">Description</label>
+<textarea class="w-full bg-transparent border-none p-0 text-lg leading-relaxed placeholder:text-surface-variant focus:ring-0 resize-none" id="description" placeholder="Tell the story behind this creation..." rows="5"></textarea>
+<div class="h-px w-full bg-surface-container mt-2 group-focus-within:bg-primary transition-colors duration-500"></div>
+</div>
+</div>
+<!-- Price Section -->
+<div class="bg-surface-container-low rounded-xl p-8 space-y-8">
+<h3 class="text-sm font-headline uppercase tracking-widest text-on-surface-variant">Commercial Details</h3>
+<div class="flex flex-col md:flex-row gap-8">
+<div class="flex-1">
+<label class="block text-[10px] uppercase tracking-widest text-outline mb-3" for="amount">Amount</label>
+<input class="w-full bg-surface-container-lowest rounded-lg border-none ghost-border py-4 px-6 text-xl focus:bg-surface-container-high transition-colors focus:ring-0" id="amount" placeholder="0.00" type="number"/>
+</div>
+<div class="w-full md:w-40">
+<label class="block text-[10px] uppercase tracking-widest text-outline mb-3" for="currency">Currency</label>
+<select class="w-full bg-surface-container-lowest rounded-lg border-none ghost-border py-4 px-6 appearance-none focus:bg-surface-container-high transition-colors focus:ring-0" id="currency">
+<option>USD</option>
+<option>EUR</option>
+<option>GBP</option>
+<option>JPY</option>
+</select>
+</div>
+</div>
+</div>
+</form>
+<!-- Right Column: Media Gallery -->
+<div class="lg:col-span-5">
+<div class="sticky top-32">
+<div class="flex justify-between items-end mb-6">
+<div>
+<label class="block text-[10px] uppercase tracking-widest text-outline mb-2 font-semibold">Visual Gallery</label>
+<p class="text-xs text-on-surface-variant">Curate up to 7 perspectives.</p>
+</div>
+<span class="text-xs font-medium text-primary">0 / 7</span>
+</div>
+<!-- Bento Grid for Images -->
+<div class="grid grid-cols-4 grid-rows-3 gap-3 aspect-square">
+<!-- Main Image Slot -->
+<div class="col-span-2 row-span-2 bg-surface-container-high rounded-xl relative group overflow-hidden flex items-center justify-center cursor-pointer hover:bg-surface-variant transition-colors">
+<div class="text-center z-10 p-4">
+<span class="material-symbols-outlined text-outline text-3xl mb-2" data-icon="add_photo_alternate">add_photo_alternate</span>
+<p class="text-[10px] uppercase tracking-tighter text-outline font-semibold">Hero Image</p>
+</div>
+<img class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-10 transition-opacity" data-alt="Minimalist abstract art installation in a bright white gallery space with soft shadows and architectural lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAi3DxqeryQc41Qij5zTAPfkWnLg-NuhbFmTGAbDsQi6i7JRGtEE_Y4atq_aQbBzl0_gBLBLQ4LfxfP2R1_u3gi4N9n2mFyr4W7zxbbVwZYaxnurFaZ3jvXkagHEHmd7-7V3VMvSFdNlG_kuX6hvNHbSmX5XQ9fwbBnSy8nvXy1Y2jHkC_4uIsXSTQ4pXWvvKRwq5l-Eqj889YeRRbVird7vXS0KCmuQbRBn1-WXeEKmkCc9qWzOk394Fi_EXrQ7Rvr6c3ON93bHM7H"/>
+</div>
+<!-- Secondary Slots -->
+<div class="bg-surface-container-low rounded-xl flex items-center justify-center cursor-pointer hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-outline-variant text-xl" data-icon="image">image</span>
+</div>
+<div class="bg-surface-container-low rounded-xl flex items-center justify-center cursor-pointer hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-outline-variant text-xl" data-icon="image">image</span>
+</div>
+<div class="bg-surface-container-low rounded-xl flex items-center justify-center cursor-pointer hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-outline-variant text-xl" data-icon="image">image</span>
+</div>
+<div class="bg-surface-container-low rounded-xl flex items-center justify-center cursor-pointer hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-outline-variant text-xl" data-icon="image">image</span>
+</div>
+<div class="bg-surface-container-low rounded-xl flex items-center justify-center cursor-pointer hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-outline-variant text-xl" data-icon="image">image</span>
+</div>
+<div class="bg-surface-container-low rounded-xl flex items-center justify-center cursor-pointer hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-outline-variant text-xl" data-icon="image">image</span>
+</div>
+</div>
+<div class="mt-8 p-6 bg-surface-container-lowest rounded-xl ghost-border flex items-start gap-4">
+<span class="material-symbols-outlined text-primary-dim mt-0.5" data-icon="lightbulb">lightbulb</span>
+<p class="text-xs leading-relaxed text-on-surface-variant italic">
+                            Pro tip: Higher resolution images with natural lighting tend to engage curators more effectively.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-6 py-4 pb-8 bg-white/70 dark:bg-stone-900/70 backdrop-blur-md shadow-[0px_-10px_30px_rgba(45,52,51,0.03)] rounded-t-3xl">
+<button class="flex items-center justify-center text-stone-400 dark:text-stone-500 p-3 hover:bg-stone-50 dark:hover:bg-stone-800/50 transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="home_max">home_max</span>
+</button>
+<button class="flex items-center justify-center text-stone-400 dark:text-stone-500 p-3 hover:bg-stone-50 dark:hover:bg-stone-800/50 transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<!-- Active State for Creation Page -->
+<button class="flex items-center justify-center bg-stone-100 dark:bg-stone-800 rounded-full p-3 text-stone-900 dark:text-white transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="add_circle" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+</button>
+<button class="flex items-center justify-center text-stone-400 dark:text-stone-500 p-3 hover:bg-stone-50 dark:hover:bg-stone-800/50 transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="person_outline">person_outline</span>
+</button>
+</nav>
+</body></html>

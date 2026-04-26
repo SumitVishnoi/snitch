@@ -4,6 +4,7 @@ import multer from "multer"
 import { createProduct, getSellerProduct } from "../controllers/product.controller.js"
 import { createProductValidator } from "../validators/product.validator.js"
 
+
 const router = express.Router()
 
 const upload = multer({
@@ -14,14 +15,14 @@ const upload = multer({
 })
 
 /**
- * @route /api/products/
+ * @route POST /api/products/
  * @description create new product by seller
  * @access Private
  */
 router.post("/", authenticateSeller, upload.array("images", 7), createProductValidator, createProduct)
 
 /**
- * @route /api/products/seller
+ * @route GET /api/products/seller
  * @desc get all products created by seller
  * @access Private
  */

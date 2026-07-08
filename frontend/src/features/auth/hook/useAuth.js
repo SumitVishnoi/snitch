@@ -22,6 +22,7 @@ export const useAuth = () => {
         isSeller,
       });
       dispatch(setUser(data.user));
+      return data.user;
     } catch (error) {
       throw new Error("registration failed");
     } finally {
@@ -34,6 +35,7 @@ export const useAuth = () => {
       dispatch(setLoading(true));
       const data = await login({ email, password });
       dispatch(setUser(data.user));
+      return data.user;
     } catch (error) {
       throw new Error("login failed");
     } finally {

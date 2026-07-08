@@ -22,11 +22,17 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await handleLogin({
+    const user = await handleLogin({
       email: formData.email,
       password: formData.password
     })
-    navigate("/")
+    if(user.role === "buyer") {
+      navigate("/")
+    }
+    else if(user.role === "seller") {
+      navigate("/seller/dashboard")
+    }
+    
   };
 
   const inputStyle = {

@@ -1,7 +1,7 @@
 import express from "express"
 import { authenticateSeller } from "../middlewares/auth.middleware.js"
 import multer from "multer"
-import { createProduct, getSellerProduct } from "../controllers/product.controller.js"
+import { createProduct, getAllProducts, getSellerProduct } from "../controllers/product.controller.js"
 import { createProductValidator } from "../validators/product.validator.js"
 
 
@@ -27,5 +27,12 @@ router.post("/", authenticateSeller, upload.array("images", 7), createProductVal
  * @access Private
  */
 router.get("/seller", authenticateSeller, getSellerProduct)
+
+/**
+ * @route GET /api/
+ * @desc get all the products 
+ * @access Public
+ */
+router.get("/", getAllProducts)
 
 export default router

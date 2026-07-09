@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux"
-import { createProduct, getAllProducts, getSellerProduct } from "../service/product.api"
+import { createProduct, getAllProducts, getProductById, getSellerProduct } from "../service/product.api"
 import { setProducts, setSellerProduct } from "../state/product.slice"
 
 
@@ -34,9 +34,19 @@ export const useProduct = ()=> {
         }
     }
 
+    async function handleGetProductById(productId) {
+        try {
+            const data = await getProductById(productId)
+            return data.product
+        } catch (error) {
+            throw new Error("Doesn't not found detail of product")
+        }
+    }
+
     return {
         handleCreateProduct,
         handleGetSellerProduct,
-        handleGetAllProducts
+        handleGetAllProducts,
+        handleGetProductById
     }
 }

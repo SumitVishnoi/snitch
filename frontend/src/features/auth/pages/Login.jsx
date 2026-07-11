@@ -32,7 +32,6 @@ const Login = () => {
     else if(user.role === "seller") {
       navigate("/seller/dashboard")
     }
-    
   };
 
   const inputStyle = {
@@ -249,7 +248,7 @@ const Login = () => {
               >
                 Already have an account?{" "}
                 <a
-                  href="/login"
+                  href="/register"
                   className="transition-colors duration-200"
                   style={{
                     color: "#7A6E63",

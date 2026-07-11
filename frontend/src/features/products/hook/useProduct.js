@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux"
-import { createProduct, getAllProducts, getProductById, getSellerProduct } from "../service/product.api"
+import { addProductVariant, createProduct, getAllProducts, getProductById, getSellerProduct } from "../service/product.api"
 import { setProducts, setSellerProduct } from "../state/product.slice"
 
 
@@ -21,7 +21,7 @@ export const useProduct = ()=> {
             const data = await getSellerProduct()
             dispatch(setSellerProduct(data.products))
         } catch (error) {
-            throw new Error ("Failed to fetch seller products")
+            throw new Error ("Failed to fetch seller product", error)
         }
     }
 
@@ -38,8 +38,17 @@ export const useProduct = ()=> {
         try {
             const data = await getProductById(productId)
             return data.product
-        } catch (error) {
+        } catch {
             throw new Error("Doesn't not found detail of product")
+        }
+    }
+
+    async function handleAddProductVariant(productId, newProductVariant) {
+        try {
+            const data = await addProductVariant(productId, newProductVariant)
+            return data.product
+        } catch {
+            throw new Error("Product variant error")
         }
     }
 
@@ -47,6 +56,7 @@ export const useProduct = ()=> {
         handleCreateProduct,
         handleGetSellerProduct,
         handleGetAllProducts,
-        handleGetProductById
+        handleGetProductById,
+        handleAddProductVariant
     }
 }

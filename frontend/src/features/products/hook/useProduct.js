@@ -46,7 +46,8 @@ export const useProduct = ()=> {
     async function handleAddProductVariant(productId, newProductVariant) {
         try {
             const data = await addProductVariant(productId, newProductVariant)
-            return data.product
+            console.log("data: ", data)
+            return data
         } catch {
             throw new Error("Product variant error")
         }

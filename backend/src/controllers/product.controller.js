@@ -75,11 +75,12 @@ export const getProuctDetail = async (req, res) => {
 };
 
 export const addProductVariant = async (req, res) => {
-  const { productId } = req.params;
+  const productId = req.params.productId;
+  console.log(req.user.id)
 
   const product = await productModel.findOne({
     _id: productId,
-    user: req.user._id,
+    seller: req.user._id,
   });
 
   if (!product) {
@@ -118,6 +119,8 @@ export const addProductVariant = async (req, res) => {
     })
 
     await product.save()
+
+    console.log(product)
 
     res.status(200).json({
         success: true,

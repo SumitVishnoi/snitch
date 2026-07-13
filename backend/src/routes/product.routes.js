@@ -47,6 +47,6 @@ router.get("/detail/:productId", getProuctDetail)
  * @desc create the variants of the product
  * @access Private
  */
-router.post("/:productId/variants", authenticateSeller, upload.array("images", 7), createProductValidator, addProductVariant)
+router.post("/:productId/variants", authenticateSeller, upload.array("images", 7), addProductVariant)
 
 export default router

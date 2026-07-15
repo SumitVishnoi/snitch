@@ -1,13 +1,14 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { useParams, Link } from "react-router";
 import { useProduct } from "../hook/useProduct";
+import useCart from "../../cart/hook/useCart";
 
 const ProductDetail = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedAttributes, setSelectedAttributes] = useState({});
-
+  const {handleAddToCart} = useCart()
   const { handleGetProductById } = useProduct();
 
   async function fetchProductDetails() {
@@ -130,6 +131,9 @@ const ProductDetail = () => {
   const displayPrice = activeVariant?.price?.amount
     ? activeVariant.price
     : product.price;
+
+
+    console.log({product, activeVariant})
 
   return (
     <>
@@ -364,7 +368,7 @@ const ProductDetail = () => {
                     e.currentTarget.style.color = "#fbf9f6";
                   }}
                   onClick={() => {
-                    handleAddItem({
+                    handleAddToCart({
                       productId: product._id,
                       variantId: activeVariant._id,
                     });

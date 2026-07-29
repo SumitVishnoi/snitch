@@ -11,7 +11,7 @@ const cartRouter = express.Router()
  * @description Product add to cart
  * @access Private
  */
-cartRouter.post("/", authenticateUser, validateAddToCart, addToCart)
+cartRouter.post("/:productId/:variantId", authenticateUser, validateAddToCart, addToCart)
 
 /**
  * @route GET /api/cart/

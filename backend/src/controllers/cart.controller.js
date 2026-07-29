@@ -91,12 +91,12 @@ export const getCart = async (req, res)=> {
   }).populate("items.product")
 
   if(!cart) {
-    cart = await cartMode.create({
+    cart = await cartModel.create({
       user: userId
     })
   }
 
-  return res.status(400).json({
+  return res.status(200).json({
     success: true,
     message: "Cart fetched successfully",
     cart

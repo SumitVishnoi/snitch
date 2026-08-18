@@ -26,6 +26,7 @@ const Cart = () => {
     handleGetCart,
     handleIncrementCartItemQuantity,
     handleDecrementCartItemQuantity,
+    handleDeleteCartItem
   } = useCart();
   const navigate = useNavigate();
 
@@ -353,6 +354,7 @@ const Cart = () => {
                           {/* Remove */}
                           <button
                             id={`remove-${_id}`}
+                            onClick = {()=> handleDeleteCartItem({productId: _id, variantId})}
                             className="text-[10px] uppercase tracking-[0.22em] font-medium transition-all duration-200 hover:underline hover:opacity-70"
                             style={{ color: tokens.muted }}
                           >

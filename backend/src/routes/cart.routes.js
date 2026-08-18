@@ -1,7 +1,7 @@
 import express from "express"
 import { authenticateUser } from "../middlewares/auth.middleware.js"
 import { validateAddToCart, validateIncrementCartItemQuantity } from "../validators/cart.validator.js"
-import { addToCart, decrementQuantity, getCart, incrementQuantity } from "../controllers/cart.controller.js"
+import { addToCart, decrementQuantity, deleteItemInCart, getCart, incrementQuantity } from "../controllers/cart.controller.js"
 
 
 const cartRouter = express.Router()
@@ -33,5 +33,14 @@ cartRouter.patch("/quantity/increment/:productId/:variantId", authenticateUser, 
  * @access Private
  */
 cartRouter.patch("/quantity/decrement/:productId/:variantId", authenticateUser, validateIncrementCartItemQuantity, decrementQuantity)
+
+/**
+ * @route DELETE /api/cart/delete/:productId/:variantId
+ * @description delete the item from cart
+ * @access Private
+ */
+cartRouter.delete("/delete/:productId/:variantId", authenticateUser, validateIncrementCartItemQuantity, deleteItemInCart)
+
+
 
 export default cartRouter

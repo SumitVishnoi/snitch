@@ -165,8 +165,7 @@ export const incrementQuantity = async (req, res) => {
   } catch (error) {
     return res.status(500).json({
       success: false,
-      message: "Internal server error",
-      error: error.message,
+      message: "Internal server error"
     });
   }
 };
@@ -235,7 +234,53 @@ export const decrementQuantity = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "Internal Server error",
-      error: error.message,
     });
   }
 };
+
+export const deleteItemInCart = async (req, res) => {
+  try {
+    const {productId, variantId} = req.params
+
+    const product = await productModel.findOne({
+      _id: productId,
+      "variants._id": variantId,
+    })
+
+    if(!product) {
+      return res.status(404).json({
+        success: false,
+        message: "Product not found"
+      })
+    }
+
+    const cart = await cartModel.findOne({
+      user: req.user._id,
+    });
+
+    if(!cart) {
+      return res.status(404).json({
+        success: false,
+        message: "Cart not found"
+      })
+    }
+
+    await cartModel.findOneAndDelete(
+      {
+        user: req.user._id,
+        "items.product": productId,
+        "items.variant": variantId,
+      }
+    )
+
+    return res.status(200).json({
+      success: true,
+      message: "Item deleted successfully"
+    })
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Internal Server error",
+    })
+  }
+}

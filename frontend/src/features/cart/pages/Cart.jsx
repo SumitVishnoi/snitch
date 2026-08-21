@@ -26,7 +26,7 @@ const Cart = () => {
     handleGetCart,
     handleIncrementCartItemQuantity,
     handleDecrementCartItemQuantity,
-    handleDeleteCartItem
+    handleDeleteCartItem,
   } = useCart();
   const navigate = useNavigate();
 
@@ -216,7 +216,7 @@ const Cart = () => {
 
                   return (
                     <div
-                      key={_id}
+                      key={`${item.product._id}-${item.variant}`}
                       className="flex gap-6 md:gap-8 p-6 md:p-8 transition-all duration-300"
                       style={{ backgroundColor: tokens.surfaceLow }}
                     >
@@ -354,7 +354,12 @@ const Cart = () => {
                           {/* Remove */}
                           <button
                             id={`remove-${_id}`}
-                            onClick = {()=> handleDeleteCartItem({productId: _id, variantId})}
+                            onClick={() =>
+                              handleDeleteCartItem({
+                                productId: _id,
+                                variantId,
+                              })
+                            }
                             className="text-[10px] uppercase tracking-[0.22em] font-medium transition-all duration-200 hover:underline hover:opacity-70"
                             style={{ color: tokens.muted }}
                           >

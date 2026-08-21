@@ -28,8 +28,8 @@ export const addToCart = async (req, res) => {
 
   const isProductAlreadyInCart = cart.items.some(
     (item) =>
-      item.product._id.toString() === productId &&
-      item.variantId.toString() === variantId,
+      item.product.toString() === productId &&
+      item.variant.toString() === variantId,
   );
 
   if (isProductAlreadyInCart) {
@@ -165,7 +165,7 @@ export const incrementQuantity = async (req, res) => {
   } catch (error) {
     return res.status(500).json({
       success: false,
-      message: "Internal server error"
+      message: "Internal server error",
     });
   }
 };
@@ -240,47 +240,43 @@ export const decrementQuantity = async (req, res) => {
 
 export const deleteItemInCart = async (req, res) => {
   try {
-    const {productId, variantId} = req.params
+    const { productId, variantId } = req.params;
 
-    const product = await productModel.findOne({
-      _id: productId,
-      "variants._id": variantId,
-    })
-
-    if(!product) {
-      return res.status(404).json({
-        success: false,
-        message: "Product not found"
-      })
-    }
-
-    const cart = await cartModel.findOne({
-      user: req.user._id,
-    });
-
-    if(!cart) {
-      return res.status(404).json({
-        success: false,
-        message: "Cart not found"
-      })
-    }
-
-    await cartModel.findOneAndDelete(
+    const cart = await cartModel.findOneAndUpdate(
       {
         user: req.user._id,
-        "items.product": productId,
-        "items.variant": variantId,
-      }
-    )
+      },
+      {
+        $pull: {
+          items: {
+            product: productId,
+            variant: variantId,
+          },
+        },
+      },
+      {
+        new: true,
+      },
+    );
+
+    if (!cart) {
+      return res.status(404).json({
+        success: false,
+        message: "Cart not found",
+      });
+    }
 
     return res.status(200).json({
       success: true,
-      message: "Item deleted successfully"
-    })
+      message: "Item deleted successfully",
+      cart,
+    });
   } catch (error) {
+    console.error("Delete cart item error:", error);
+
     return res.status(500).json({
       success: false,
       message: "Internal Server error",
-    })
+    });
   }
-}
+};
